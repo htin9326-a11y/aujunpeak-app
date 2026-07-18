@@ -96,17 +96,17 @@ function AboutView({ onBack }: { onBack: () => void }) {
   const stats = [
     { label: 'Version', value: '2.1.0', icon: <Code2 className="w-4 h-4" />, color: '#FF1744' },
     { label: 'Build', value: '2025071401', icon: <Award className="w-4 h-4" />, color: '#00E5FF' },
-    { label: 'Platform', value: 'Android / iOS', icon: <Globe className="w-4 h-4" />, color: '#22c55e' },
+    { label: 'Platform', value: ' iOS', icon: <Globe className="w-4 h-4" />, color: '#22c55e' },
     { label: 'License', value: 'VIP', icon: <Star className="w-4 h-4" />, color: '#facc15' },
   ];
 
   const info = [
     { k: 'Developer', v: 'Aujunpeak Team' },
-    { k: 'Support', v: 'Telegram @aujunpeak' },
-    { k: 'Game Focus', v: 'Free Fire / PUBG / CODM' },
+    { k: 'Support', v: 'Zalo 0833091543' },
+    { k: 'Game Focus', v: 'Free Fire ' },
     { k: 'Engine', v: 'AJP Optimizer v3' },
     { k: 'Anti-Detect', v: 'Stealth Layer 2.0' },
-    { k: 'Updated', v: 'July 2025' },
+    { k: 'Updated', v: 'July 2026' },
   ];
 
   return (
@@ -135,7 +135,7 @@ function AboutView({ onBack }: { onBack: () => void }) {
             </motion.div>
             <div className="text-center">
               <div className="text-white font-black text-xl uppercase tracking-[0.25em]">AUJUNPEAK</div>
-              <div className="text-primary text-[10px] font-black tracking-widest mt-1 uppercase">Game Optimizer · VIP Edition</div>
+              <div className="text-primary text-[10px] font-black tracking-widest mt-1 uppercase">Game Optimizer · Huấn Hà</div>
             </div>
           </div>
         </FrostedCard>
