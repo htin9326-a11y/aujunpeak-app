@@ -16,76 +16,76 @@ import { toast } from 'sonner';
 ───────────────────────────────────────────── */
 const GAMES = [
   {
-    id: 'freefire',
-    name: 'Free Fire',
-    short: 'FF',
-    logo: 'https://cdn-www.bluestacks.com/bs-images/a9bd218687bd471bf3d4bd4e912adc82.png',
-    color: '#FF1744',
-    tier: 'VIP',
-    fps: '90',
+    id: "freefire",
+    name: "Free Fire",
+    short: "FF",
+    logo: "https://upload.wikimedia.org/wikipedia/en/6/6e/Free_Fire_Logo.png",
+    color: "#FF1744",
+    tier: "VIP",
+    fps: "90",
     ping: 8,
-    pkg: 'com.dts.freefireth',
-    desc: 'Battle Royale · 50 players',
+    pkg: "com.dts.freefireth",
+    desc: "Battle Royale · 50 players",
   },
   {
-    id: 'pubg',
-    name: 'PUBG Mobile',
-    short: 'PB',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/2/2d/PUBG_MOBILE.png',
-    color: '#facc15',
-    tier: 'Supported',
-    fps: '60',
+    id: "pubg",
+    name: "PUBG Mobile",
+    short: "PB",
+    logo: "https://upload.wikimedia.org/wikipedia/en/2/2d/PUBG_MOBILE.png",
+    color: "#facc15",
+    tier: "Supported",
+    fps: "60",
     ping: 12,
-    pkg: 'com.tencent.ig',
-    desc: 'Battle Royale · 100 players',
+    pkg: "com.tencent.ig",
+    desc: "Battle Royale · 100 players",
   },
   {
-    id: 'codm',
-    name: 'Call of Duty',
-    short: 'CD',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/5/5a/Call_of_Duty_Mobile_official_logo.png',
-    color: '#00E5FF',
-    tier: 'Supported',
-    fps: '60',
+    id: "codm",
+    name: "Call of Duty",
+    short: "CD",
+    logo: "https://upload.wikimedia.org/wikipedia/en/5/5a/Call_of_Duty_Mobile_official_logo.png",
+    color: "#00E5FF",
+    tier: "Supported",
+    fps: "60",
     ping: 15,
-    pkg: 'com.activision.codmobile',
-    desc: 'FPS · Multiplayer',
+    pkg: "com.activision.codmobile",
+    desc: "FPS · Multiplayer",
   },
   {
-    id: 'ml',
-    name: 'Mobile Legends',
-    short: 'ML',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/9/97/Mobile_Legends_Bang_Bang_new_logo.png',
-    color: '#a855f7',
-    tier: 'Supported',
-    fps: '60',
+    id: "ml",
+    name: "Mobile Legends",
+    short: "ML",
+    logo: "https://upload.wikimedia.org/wikipedia/en/9/97/Mobile_Legends_Bang_Bang_new_logo.png",
+    color: "#a855f7",
+    tier: "Supported",
+    fps: "60",
     ping: 9,
-    pkg: 'com.mobile.legends',
-    desc: 'MOBA · 5v5',
+    pkg: "com.mobile.legends",
+    desc: "MOBA · 5v5",
   },
   {
-    id: 'aov',
-    name: 'Arena of Valor',
-    short: 'AV',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/3/38/Arena_of_Valor_logo.png',
-    color: '#22c55e',
-    tier: 'Supported',
-    fps: '60',
+    id: "aov",
+    name: "Arena of Valor",
+    short: "AV",
+    logo: "https://upload.wikimedia.org/wikipedia/en/3/38/Arena_of_Valor_logo.png",
+    color: "#22c55e",
+    tier: "Supported",
+    fps: "60",
     ping: 11,
-    pkg: 'com.ngame.slither.io',
-    desc: 'MOBA · Strategy',
+    pkg: "com.ngame.slither.io",
+    desc: "MOBA · Strategy",
   },
   {
-    id: 'rox',
-    name: 'ROX',
-    short: 'RX',
-    logo: 'https://play-lh.googleusercontent.com/cqb1hTlZPhTHR6g3cxGP4rAT7n4WQ8rrVB9K0Rq7DzR0Fo-yfbFp4SLR9iNkEzJZw=s256-rw',
-    color: '#f97316',
-    tier: 'Beta',
-    fps: '60',
+    id: "rox",
+    name: "ROX",
+    short: "RX",
+    logo: "https://play-lh.googleusercontent.com/cqb1hTlZPhTHR6g3cxGP4rAT7n4WQ8rrVB9K0Rq7DzR0Fo-yfbFp4SLR9iNkEzJZw=s256-rw",
+    color: "#f97316",
+    tier: "Beta",
+    fps: "60",
     ping: 18,
-    pkg: 'com.rox.mobile',
-    desc: 'Action · RPG',
+    pkg: "com.rox.mobile",
+    desc: "Action · RPG",
   },
 ];
 
@@ -803,30 +803,59 @@ function GameCard({ game, idx, onClick }: { game: Game; idx: number; onClick: ()
         )}
 
         <div className="flex items-center gap-4 pl-4 pr-4 py-3.5">
-          {/* Logo PNG với border glow */}
-          <div className="relative flex-shrink-0">
-            {/* Vòng border ngoài */}
+          {/* Logo PNG — border xoay luôn hiển thị */}
+          <div className="relative flex-shrink-0" style={{ width: 52, height: 52 }}>
+            {/* Ambient glow nền */}
+            <motion.div
+              className="absolute inset-0 rounded-xl"
+              animate={{
+                boxShadow: hovered
+                  ? [`0 0 14px ${game.color}70`, `0 0 28px ${game.color}99`, `0 0 14px ${game.color}70`]
+                  : [`0 0 8px ${game.color}40`, `0 0 16px ${game.color}60`, `0 0 8px ${game.color}40`],
+              }}
+              transition={{ duration: hovered ? 1.2 : 2.5, repeat: Infinity, ease: 'easeInOut' }}
+            />
+
+            {/* Conic border xoay — luôn chạy, tốc độ tăng khi hover */}
             <motion.div
               className="absolute -inset-[2px] rounded-xl"
               style={{
-                background: `conic-gradient(from 0deg, ${game.color}, transparent 40%, ${game.color})`,
-                opacity: hovered ? 1 : 0,
-                transition: 'opacity 0.25s',
+                background: `conic-gradient(from 0deg, ${game.color}, transparent 45%, ${game.color}88 80%, ${game.color})`,
+                zIndex: 0,
               }}
-              animate={hovered ? { rotate: 360 } : {}}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+              animate={{ rotate: 360 }}
+              transition={{
+                duration: hovered ? 1.5 : 3.5,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
             />
+
+            {/* Nền trong + logo */}
             <div
-              className="relative w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden z-10"
+              className="absolute inset-[2px] rounded-[10px] z-10 flex items-center justify-center overflow-hidden"
               style={{
-                background: `radial-gradient(circle at 30% 30%, ${game.color}25 0%, rgba(10,10,10,0.9) 70%)`,
-                border: `1.5px solid ${game.color}35`,
-                boxShadow: hovered ? `0 0 16px ${game.color}50` : `0 0 8px ${game.color}25`,
-                transition: 'box-shadow 0.25s',
+                background: `radial-gradient(circle at 30% 30%, ${game.color}20 0%, rgba(8,8,8,0.95) 70%)`,
               }}
             >
-              <GameLogo game={game} size={36} />
+              <GameLogo game={game} size={34} />
             </div>
+
+            {/* Shine sweep khi hover */}
+            <AnimatePresence>
+              {hovered && (
+                <motion.div
+                  className="absolute inset-[2px] rounded-[10px] z-20 pointer-events-none"
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: [0, 0.5, 0], x: 50 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
+                  style={{
+                    background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%)',
+                  }}
+                />
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Info */}
@@ -919,4 +948,3 @@ export function GameTab() {
     </div>
   );
 }
-
