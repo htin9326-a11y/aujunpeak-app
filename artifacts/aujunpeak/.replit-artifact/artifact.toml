@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Aujunpeak - Game Optimizer"
+version = "1.0.0"
+id = "artifacts/aujunpeak"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24443
+
+[services.development]
+run = "pnpm --filter @workspace/aujunpeak run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/aujunpeak", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/aujunpeak/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24443"
+BASE_PATH = "/"
